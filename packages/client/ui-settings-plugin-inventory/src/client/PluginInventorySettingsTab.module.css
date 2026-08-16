@@ -8,6 +8,7 @@
 }
 
 .catalogHeading h3,
+.groupHeading,
 .status,
 .failure p {
   margin: 0;
@@ -99,11 +100,33 @@
   font-variant-numeric: tabular-nums;
 }
 
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.groupHeading {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  padding: 0 2px;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.groupHeading span {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--dsw-alias-label-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
 .cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -129,9 +152,9 @@
   justify-content: space-between;
   gap: 12px;
   width: 100%;
-  min-height: 52px;
+  min-height: 56px;
   border: 0;
-  padding: 12px 14px;
+  padding: 10px 14px;
   background: transparent;
   color: inherit;
   font: inherit;
@@ -149,14 +172,28 @@
   outline-offset: -2px;
 }
 
+.identity {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
 .cardTitle {
   min-width: 0;
-  overflow: hidden;
-  font-size: 14px;
-  line-height: 20px;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  line-height: 18px;
   font-weight: 600;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+}
+
+.entryValue {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--dsw-alias-label-tertiary);
+  font-family: var(--ds-font-family-code);
+  font-size: 11px;
+  line-height: 16px;
 }
 
 .cardTrailing {
@@ -165,6 +202,20 @@
   align-items: center;
   gap: 7px;
   color: var(--dsw-alias-label-tertiary);
+}
+
+.dupTag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  border-radius: 5px;
+  padding: 1px 6px;
+  background: color-mix(in srgb, var(--dsw-alias-state-business-primary) 12%, transparent);
+  color: var(--dsw-alias-state-business-primary);
+  font-size: 11px;
+  line-height: 16px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 .statusDot {
@@ -221,20 +272,11 @@
   background: var(--dsw-alias-bg-module-platform);
 }
 
-.entryValue {
-  display: block;
-  overflow-wrap: anywhere;
-  color: var(--dsw-alias-label-primary);
-  font-family: var(--ds-font-family-code);
-  font-size: 12px;
-  line-height: 18px;
-}
-
 .details {
   display: grid;
   grid-template-columns: 76px minmax(0, 1fr);
   gap: 6px 10px;
-  margin: 8px 0 0;
+  margin: 0;
 }
 
 .details div {
@@ -269,11 +311,5 @@
 @media (prefers-reduced-motion: no-preference) {
   .chevron {
     transition: transform 140ms var(--ds-ease-in-out);
-  }
-}
-
-@media (max-width: 680px) {
-  .cards {
-    grid-template-columns: minmax(0, 1fr);
   }
 }
